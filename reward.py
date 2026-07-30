@@ -1,16 +1,19 @@
+import csv
 import random
-import pyautogui
 import time
+from pathlib import Path
+
+import pyautogui
+
+csv_path = Path(__file__).resolve().parent / "recourses" / "most_streamed_spotify_2025.csv"
+
+with csv_path.open("r", encoding="utf-8-sig", newline="") as archivo_csv:
+    lector = csv.reader(archivo_csv)
+    next(lector, None)  # omite la fila de encabezado
+    palabras = [fila[1] for fila in lector if len(fila) > 1 and fila[1].strip()]
 
 time.sleep(2)  # Espera 2 segundos antes de iniciar la acción
 pyautogui.click(887, 40)  # Simula un clic del mouse en la posición actual
-
-palabras = [
-    "este", "programa", "escribe", "treinta", "palabras", "en", "una", "lista",
-    "para", "simular", "escritura", "humana", "en", "una", "ventana", "de", "texto",
-    "cada", "elemento", "se", "envia", "con", "un", "pequeno", "retardo",
-    "y", "al", "final", "presiona", "enter"
-]
 
 for palabra in palabras:
     pyautogui.click(887, 40)  # vuelve a enfocar la ventana de texto antes de escribir
