@@ -1,12 +1,26 @@
+import random
 import pyautogui
 import time
 
 time.sleep(2)  # Espera 2 segundos antes de iniciar la acción
-pyautogui.click(925, 39)  # Simula un clic del mouse en la posición actual
-texto = "ejemplo de búsqueda"
+pyautogui.click(887, 40)  # Simula un clic del mouse en la posición actual
 
-for letra in texto:
-    pyautogui.write(letra)
-    time.sleep(0.5)  # pequeña pausa entre teclas, simula escritura humana
+palabras = [
+    "este", "programa", "escribe", "treinta", "palabras", "en", "una", "lista",
+    "para", "simular", "escritura", "humana", "en", "una", "ventana", "de", "texto",
+    "cada", "elemento", "se", "envia", "con", "un", "pequeno", "retardo",
+    "y", "al", "final", "presiona", "enter"
+]
 
-pyautogui.press('enter')
+for palabra in palabras:
+    pyautogui.click(887, 40)  # vuelve a enfocar la ventana de texto antes de escribir
+
+    for letra in palabra:
+        pyautogui.write(letra)
+        time.sleep(0.3)  # pausa entre cada letra
+
+    pyautogui.click(887, 40)  # vuelve a enfocar la ventana de texto
+    pyautogui.press('enter')  # presiona enter después de cada palabra
+    time.sleep(random.uniform(0.5, 10))  # pequeña pausa entre palabras
+
+    pyautogui.hotkey('alt', 'f4')  # cierra la ventana después de cada búsqueda
