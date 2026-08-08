@@ -28,13 +28,12 @@ try:
 
     random.shuffle(palabras)
 
-    time.sleep(1)  # Espera 1 segundo antes de iniciar la acción
-    pyautogui.click(1073, 1055)  # Abre edge de la barra de tareas
-    time.sleep(2)  # Espera 2 segundos para que Edge se abra
-
     max_searches = 35
     for i, palabra in enumerate(palabras[:max_searches], start=1):
-        pyautogui.click(289, 59)  # vuelve a enfocar la ventana de texto antes de escribir
+        time.sleep(2)  # Espera 2 segundos para que Edge se abra
+        pyautogui.click(1073, 1055)  # Abre edge de la barra de tareas nuevamente
+        time.sleep(.5)  
+        pyautogui.click(289, 59)
 
         escribir_palabra(palabra)
 
@@ -49,6 +48,7 @@ try:
     time.sleep(2)  # espera 2 segundos antes de continuar con la siguiente fase
     pyautogui.click(1073, 1055)  # Abre edge de la barra de tareas nuevamente
     time.sleep(1)  # Espera 1 segundo para que Edge se abra
+    
     for coordenada in coordenadas_busquedas:
         pyautogui.doubleClick(1775, 151)  # Abre rewards
         time.sleep(2)  # espera 2 segundos antes de entrar a la sección de rewards
